@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block title %}Arbitrage{% endblock %}
+{% block content %}
+<form method="POST" name="princ" >
+    <p>
+        <span id="chronotime">0:00:00:00</span><br>
+        <input type="number" id="timesec" name="temps">
+        <input type="button" name="startstop" value="start!" onClick="chronoStart()" />
+        <input type="button" name="reset" value="reset!" onClick="chronoReset()" />
+    </p>
+    <p>
+        Cible bleue : <br/>
+        <input type="radio" name="cb" value="nntir" id="nntir" >
+        <label for="nntir">Non tirée</label>
+        <input type="radio" name="cb" value="nntouch" id="nntouch">
+        <label for="nntouch">Non touchée</label>
+        <input type="radio" name="cb" value="touch" id="touch" >
+        <label for="touch">Touchée</label>
+        <input type="radio" name="cb" value="renv" id="renv">
+        <label for="renv">Renversée</label>
+    </p>
+
+
+        <p>
+            Cible verte : <br/>
+            <input type="radio" name="cv" value="nntir" id="nntir"/>
+            <label for="nntir">Non tirée</label>
+            <input type="radio" name="cv" value="nntouch" id="nntouch">
+            <label for="nntouch">Non touchée</label>
+            <input type="radio" name="cv" value="touch" id="touch">
+            <label for="touch">Touchée</label>
+            <input type="radio" name="cv" value="renv" id="renv">
+            <label for="renv">Renversée</label>
+        </p>
+
+        <p>
+            Cible rouge : <br/>
+            <input type="radio" name="cr" value="nntir" id="nntir"/>
+            <label for="nntir">Non tirée</label>
+            <input type="radio" name="cr" value="nntouch" id="nntouch">
+            <label for="nntouch">Non touchée</label>
+            <input type="radio" name="cr" value="touch" id="touch">
+            <label for="touch">Touchée</label>
+            <input type="radio" name="cr" value="renv" id="renv">
+            <label for="renv">Renversée</label>
+        </p>
+
+    <p>Bonus 3 cibles renversées : <br>
+        <input type="radio" name="bonus3c" value="yes" id="bonus3c">
+        <label for="bonus3c">Oui</label>
+        <input type="radio" name="bonus3c" value="no" id="bonus3c">
+        <label for="bonus3c">Non</label>
+
+    </p>
+    <p>
+        Nombre de plots touchés ou renversés : <br>
+        <input type="number" min="0" name="nbplot" id="nbplot">
+    </p>
+    <p>
+        Distance entre le robot et le mur à la fin du parcours : <br>
+        (entrer 0 si le robot touche le mur) <br>
+        <input type="number" min="0" name="distm" id="distm" placeholder="en millimètres">
+    </p>
+
+    <p>
+        Demi-tour : <br>
+        <input type="radio" name="demit" value="yes" id="demit">
+        <label for="demit">Oui</label>
+        <input type="radio" name="demit" value="no" id="demit">
+        <label for="demit">Non</label>
+    </p>
+
+        <p>
+            Nombre de repositionnements du robot : <br>
+            <input type="number" min="0" name="rpst" id="rpst" min="0">
+        </p>
+    <p>
+        Animations fun (à cocher) : <br>
+        <input type="checkbox" name="bruit" value="yes" id="testBruit" >
+        <input type="hidden" name="bruit" value="no" id="testBruitHidden">
+        <label for="testBruit">Bruitage</label>
+        <input type="checkbox" name="ecran" value="yes" id="testEcran" >
+        <input type="hidden" name="ecran" value="no" id="testEcranHidden">
+        <label for="testEcran">Ecran</label>
+        <input type="checkbox" name="led" value="yes" id="testLed" >
+        <input type="hidden" name="led" value="no" id="testLedHidden">
+        <label for="testLed">LED</label>
+    </p>
+    <p>Abandon : <br>
+        <input type="radio" name="givup" value="yes" id="yes_givup">
+        <label for="yes_givup">Oui</label>
+        <input type="radio" name="givup" value="no" id="no_givup">
+        <label for="no_givup">Non</label>
+    </p>
+    <p>
+        <input type="submit" value="Envoyer" onclick=checkboxTest()>
+    </p>
+</form>
+<script language="JavaScript">
+    
+    var startTime = 0
+    var start = 0
+    var end = 0
+    var diff = 0
+    var timerID = 0
+    function checkboxTest(){
+        if(document.getElementById("testBruit").checked) {
+    document.getElementById('testBruitHidden').disabled = true;}
+    }
+    if(document.getElementById("testEcran").checked) {
+    document.getElementById('testEcranHidden').disabled = true;
+    if(document.getElementById("testLed").checked) {
+    document.getElementById('testLedHidden').disabled = true;
+}
+}
+    function chrono(){
+        end = new Date()
+        diff = end - start
+        diff = new Date(diff)
+        temps = diff.getTime()
+        var msec = diff.getMilliseconds()
+        var sec = diff.getSeconds()
+        var min = diff.getMinutes()
+        var hr = diff.getHours()-1
+        if (min < 10){
+            min = "0" + min
+        }
+        if (sec < 10){
+            sec = "0" + sec
+        }
+        if(msec < 10){
+            msec = "00" +msec
+        }
+        else if(msec < 100){
+            msec = "0" +msec
+        }
+        document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
+        document.getElementById("timesec").value = Math.round(temps / 1000)
+        timerID = setTimeout("chrono()", 10)
+    }
+    function chronoStart(){
+        document.princ.startstop.value = "stop!"
+        document.princ.startstop.onclick = chronoStop
+        document.princ.reset.onclick = chronoReset
+        start = new Date()
+        chrono()
+    }
+    function chronoContinue(){
+        document.princ.startstop.value = "stop!"
+        document.princ.startstop.onclick = chronoStop
+        document.princ.reset.onclick = chronoReset
+        start = new Date()-diff
+        start = new Date(start)
+        chrono()
+    }
+    function chronoReset(){
+        document.getElementById("chronotime").innerHTML = "0:00:00:000"
+        start = new Date()
+    }
+    function chronoStopReset(){
+        document.getElementById("chronotime").innerHTML = "0:00:00:000"
+        document.princ.startstop.onclick = chronoStart
+    }
+    function chronoStop(){
+        document.princ.startstop.value = "start!"
+        document.princ.startstop.onclick = chronoContinue
+        document.princ.reset.onclick = chronoStopReset
+        clearTimeout(timerID)
+    }
+    
+    </script>
+{% endblock %}
