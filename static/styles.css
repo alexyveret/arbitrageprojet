@@ -1,0 +1,32 @@
+.casechrono {
+    background-color:rgb(252, 44, 44);
+  padding:20px;
+  margin: 20px;
+}
+.casecible{
+  background-color:rgb(72, 248, 37);
+  padding:20px;
+  margin: 20px;
+}
+.casecount{
+  background-color:rgb(98, 146, 218);
+  padding:20px;
+  margin: 20px;
+}
+.casefinparcours{
+  background-color:rgb(243, 255, 80);
+  padding:20px;
+  margin: 20px;
+}
+.important{
+  color: rgb(20, 20, 196);
+  
+}
+.finalisation{
+  background-color:rgb(141, 141, 141);
+  padding:20px;
+  margin: 20px;
+}
+#chronotime{
+  background-color: aliceblue;
+}

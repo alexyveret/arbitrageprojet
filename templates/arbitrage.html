@@ -2,12 +2,16 @@
 {% block title %}Arbitrage{% endblock %}
 {% block content %}
 <form method="POST" name="princ" >
+    <div class="casechrono">
     <p>
         <span id="chronotime">0:00:00:00</span><br>
-        <input type="number" id="timesec" name="temps">
+        <input type="hidden" id="timesec" name="temps">
         <input type="button" name="startstop" value="start!" onClick="chronoStart()" />
         <input type="button" name="reset" value="reset!" onClick="chronoReset()" />
+        <h1 class="important">Ne pas oublier de lancer le chronomètre !</h1>
     </p>
+    </div>
+    <div class="casecible">
     <p>
         Cible bleue : <br/>
         <input type="radio" name="cb" value="nntir" id="nntir" >
@@ -44,7 +48,7 @@
             <input type="radio" name="cr" value="renv" id="renv">
             <label for="renv">Renversée</label>
         </p>
-
+    
     <p>Bonus 3 cibles renversées : <br>
         <input type="radio" name="bonus3c" value="yes" id="bonus3c">
         <label for="bonus3c">Oui</label>
@@ -52,16 +56,18 @@
         <label for="bonus3c">Non</label>
 
     </p>
+    </div>
+    <div class="casecount">
+    <p>
+        Nombre de repositionnements du robot : <br>
+        <input type="number" min="0" name="rpst" id="rpst" min="0">
+    </p>
     <p>
         Nombre de plots touchés ou renversés : <br>
         <input type="number" min="0" name="nbplot" id="nbplot">
     </p>
-    <p>
-        Distance entre le robot et le mur à la fin du parcours : <br>
-        (entrer 0 si le robot touche le mur) <br>
-        <input type="number" min="0" name="distm" id="distm" placeholder="en millimètres">
-    </p>
-
+    </div>
+    <div class="casefinparcours">
     <p>
         Demi-tour : <br>
         <input type="radio" name="demit" value="yes" id="demit">
@@ -70,10 +76,14 @@
         <label for="demit">Non</label>
     </p>
 
-        <p>
-            Nombre de repositionnements du robot : <br>
-            <input type="number" min="0" name="rpst" id="rpst" min="0">
-        </p>
+    <p>
+        Distance entre le robot et le mur à la fin du parcours : <br>
+        (entrer 0 si le robot touche le mur) <br>
+        <input type="number" min="0" name="distm" id="distm" placeholder="en millimètres">
+    </p>
+    </div>
+    
+    <div class="finalisation">
     <p>
         Animations fun (à cocher) : <br>
         <input type="checkbox" name="bruit" value="yes" id="testBruit" >
@@ -92,9 +102,11 @@
         <input type="radio" name="givup" value="no" id="no_givup">
         <label for="no_givup">Non</label>
     </p>
+    <h1 class="important">Ne pas oublier d'arrêter le chrono !</h1>
     <p>
         <input type="submit" value="Envoyer" onclick=checkboxTest()>
     </p>
+</div>
 </form>
 <script language="JavaScript">
     
