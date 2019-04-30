@@ -14,45 +14,45 @@
     <div class="casecible">
     <p>
         Cible bleue : <br/>
-        <input type="radio" name="cb" value="nntir" id="nntir" >
+        <input type="radio" name="cible bleue" value="non tirée" id="nntir" >
         <label for="nntir">Non tirée</label>
-        <input type="radio" name="cb" value="nntouch" id="nntouch">
+        <input type="radio" name="cible bleue" value="non touchée" id="nntouch">
         <label for="nntouch">Non touchée</label>
-        <input type="radio" name="cb" value="touch" id="touch" >
+        <input type="radio" name="cible bleue" value="touchée" id="touch" >
         <label for="touch">Touchée</label>
-        <input type="radio" name="cb" value="renv" id="renv">
+        <input type="radio" name="cible bleue" value="renversée" id="renv">
         <label for="renv">Renversée</label>
     </p>
 
 
         <p>
             Cible verte : <br/>
-            <input type="radio" name="cv" value="nntir" id="nntir"/>
+            <input type="radio" name="cible verte" value="non tirée" id="nntir"/>
             <label for="nntir">Non tirée</label>
-            <input type="radio" name="cv" value="nntouch" id="nntouch">
+            <input type="radio" name="cible verte" value="non touchée" id="nntouch">
             <label for="nntouch">Non touchée</label>
-            <input type="radio" name="cv" value="touch" id="touch">
+            <input type="radio" name="cible verte" value="touchée" id="touch">
             <label for="touch">Touchée</label>
-            <input type="radio" name="cv" value="renv" id="renv">
+            <input type="radio" name="cible verte" value="renversée" id="renv">
             <label for="renv">Renversée</label>
         </p>
 
         <p>
             Cible rouge : <br/>
-            <input type="radio" name="cr" value="nntir" id="nntir"/>
+            <input type="radio" name="cible rouge" value="non tirée" id="nntir"/>
             <label for="nntir">Non tirée</label>
-            <input type="radio" name="cr" value="nntouch" id="nntouch">
+            <input type="radio" name="cible rouge" value="non touchée" id="nntouch">
             <label for="nntouch">Non touchée</label>
-            <input type="radio" name="cr" value="touch" id="touch">
+            <input type="radio" name="cible rouge" value="touchée" id="touch">
             <label for="touch">Touchée</label>
-            <input type="radio" name="cr" value="renv" id="renv">
+            <input type="radio" name="cible rouge" value="renversée" id="renv">
             <label for="renv">Renversée</label>
         </p>
     
     <p>Bonus 3 cibles renversées : <br>
-        <input type="radio" name="bonus3c" value="yes" id="bonus3c">
+        <input type="radio" name="bonus 3 cibles renversées" value="oui" id="bonus3c">
         <label for="bonus3c">Oui</label>
-        <input type="radio" name="bonus3c" value="no" id="bonus3c">
+        <input type="radio" name="bonus 3 cibles renversées" value="non" id="bonus3c">
         <label for="bonus3c">Non</label>
 
     </p>
@@ -60,46 +60,46 @@
     <div class="casecount">
     <p>
         Nombre de repositionnements du robot : <br>
-        <input type="number" min="0" name="rpst" id="rpst" min="0">
+        <input type="number" name="repositionnements" id="rpst" min="0">
     </p>
     <p>
         Nombre de plots touchés ou renversés : <br>
-        <input type="number" min="0" name="nbplot" id="nbplot">
+        <input type="number" min="0" name="nombre de plots touchés" id="nbplot">
     </p>
     </div>
     <div class="casefinparcours">
     <p>
         Demi-tour : <br>
-        <input type="radio" name="demit" value="yes" id="demit">
+        <input type="radio" name="demi-tour" value="oui" id="demit">
         <label for="demit">Oui</label>
-        <input type="radio" name="demit" value="no" id="demit">
+        <input type="radio" name="demi-tour" value="non" id="demit">
         <label for="demit">Non</label>
     </p>
 
     <p>
         Distance entre le robot et le mur à la fin du parcours : <br>
         (entrer 0 si le robot touche le mur) <br>
-        <input type="number" min="0" name="distm" id="distm" placeholder="en millimètres">
+        <input type="number" min="0" name="distance du mur" id="distm" placeholder="en millimètres">
     </p>
     </div>
     
     <div class="finalisation">
     <p>
         Animations fun (à cocher) : <br>
-        <input type="checkbox" name="bruit" value="yes" id="testBruit" >
-        <input type="hidden" name="bruit" value="no" id="testBruitHidden">
+        <input type="checkbox" name="bruitage fun" value="oui" id="testBruit" >
+        <input type="hidden" name="bruitage fun" value="non" id="testBruitHidden">
         <label for="testBruit">Bruitage</label>
-        <input type="checkbox" name="ecran" value="yes" id="testEcran" >
-        <input type="hidden" name="ecran" value="no" id="testEcranHidden">
+        <input type="checkbox" name="écran fun" value="oui" id="testEcran" >
+        <input type="hidden" name="écran fun" value="non" id="testEcranHidden">
         <label for="testEcran">Ecran</label>
-        <input type="checkbox" name="led" value="yes" id="testLed" >
-        <input type="hidden" name="led" value="no" id="testLedHidden">
+        <input type="checkbox" name="leds fun" value="oui" id="testLed" >
+        <input type="hidden" name="leds fun" value="non" id="testLedHidden">
         <label for="testLed">LED</label>
     </p>
     <p>Abandon : <br>
-        <input type="radio" name="givup" value="yes" id="yes_givup">
+        <input type="radio" name="abandon" value="oui" id="yes_givup">
         <label for="yes_givup">Oui</label>
-        <input type="radio" name="givup" value="no" id="no_givup">
+        <input type="radio" name="abandon" value="non" id="no_givup">
         <label for="no_givup">Non</label>
     </p>
     <h1 class="important">Ne pas oublier d'arrêter le chrono !</h1>
